@@ -1,0 +1,13 @@
+<h2>数学ノートアーカイブ (PDF)</h2>
+<ul>
+  {{ $pdfDir := "static/pdfs" }}
+  {{ if (fileExists $pdfDir) }}
+    {{ range (readDir $pdfDir) }}
+      {{ if (findRE "\\.pdf$" .Name) }}
+        <li><a href="{{ "pdfs/" | relURL }}{{ .Name }}">{{ .Name }}</a></li>
+      {{ end }}
+    {{ end }}
+  {{ else }}
+    <li>まだノートはありません。</li>
+  {{ end }}
+</ul>

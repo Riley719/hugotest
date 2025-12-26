@@ -1,0 +1,9 @@
+baseURL = "https://riley719.github.io/hugotest/"
+title = "Rirai Math Archive"
+theme = "paige"
+languageCode = "ja"
+
+[params.paige]
+  # シンプルなデザインにするためのフラグ（テーマの仕様に依存）
+  # 複雑な装飾を避け、テキスト主体の構成を目指します
+  style = "light"

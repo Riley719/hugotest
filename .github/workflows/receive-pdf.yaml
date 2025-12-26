@@ -1,0 +1,25 @@
+name: Receive PDF from Note Repo
+
+on:
+  workflow_dispatch:
+    inputs:
+      note_name:
+        required: true
+        type: string
+      # 他のリポジトリからPDFを受け取るための口を用意
+  repository_dispatch:
+    types: [publish_note]
+
+jobs:
+  update-site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }} # ステップ1で作る秘密鍵
+
+      - name: Download PDF
+        run: |
+          mkdir -p static/pdfs
+          # ここでは、送り側のリポジトリからPDFを取得するロジックを簡略化して
+          # 送り側がこのリポジトリに直接 push する形を想定します
